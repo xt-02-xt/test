@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+*{box-sizing: border-box;}
+*{font-family: "LXGW WenKai TC", cursive;}
+.container{height: 150vh}
+#header{
+	height: 100px;
+	width: 100vw;
+	background-color: #003366;
+	padding: 1em;
+	font-family: "LXGW WenKai TC", cursive;
+	font-weight: 400;
+	font-style: normal;
+	text-align: center;
+	color: #f2f2f2;
+	/*position: fixed;
+	top: 0px;*/
+}
+.left{
+	width:15%;
+	float:left;
+	height: 150vh;
+	background-color: #ffffff; 
+}
+.center{
+	width:70%;
+	float:left;
+	height: 150vh;
+	background-color: #f9f9ec; 
+}
+.right{
+	width:15%;
+	float:left;
+	height: 150vh;
+	background-color: #ffffff; 
+}
+#footer{
+	height: 50px;
+	width: 100%;
+	float: left;
+	background-color: #003366;
+	padding: 1em;
+}
+.indent{text-indent: 50px}
+/*#column {height:150vh;width:100%;padding:3em;border:3em ;background-color: #f9f9ec}*/
+.h4-size{ font-size: 18px}
+.p-size{ font-size: 15px; font-weight: 300}
+
+
+div p{text-indent: 100px}
+ul{list-style: none;}
+li{line-height: 2.3;}
+html{scroll-behavior: auto;}
+body{margin: 0px;}
+a{font-size: 15px; font-weight: 600; border: 3px solid navy; border-radius:12px; border-color:#660000;padding: 5px}
+a:link{text-decoration:none; color: #660000}
+a:visited {text-decoration:none; color: #660000}
+a:hover {text-decoration:underline;}
+a:active {text-decoration:underline;}
+p{line-height: 1.8}
+@media screen and (max-width: 785px){
+	.left{width: 20%}
+	.center{width: 80%}
+	.right{width: 0%}
+}
+</style>
+</head>
+
+<body>
+<div id='header'>
+<h1>德州撲克介紹</h1>
+</div>
+
+<div id ="first"class='container'>
+	<div class='left'>
+		<ul>
+			<li><a href="#first">牌型大小</a></li>
+			<li><a href="#second">動作</a></li>
+		</ul>
+	</div>
+
+	<div class='center'>
+		<h2>牌型大小:</h2>
+		<h3>皇家同花順>同花順>四條(鐵支)>葫蘆>同花>順子>三條>兩對>對子>散牌</h3>
+		<div class='indent'>
+			<h5><span class='h4-size'>皇家同花順:</span>
+				<span class='p-size'>同花色的A，K，Q，J和10</span></h5>
+			<p>e.g. ♠️A ♠️K ♠️Q ♠️J ♠️10</p>
+			<h5><span class='h4-size'>同花順:</span>
+				<span class='p-size'>五張同花色的連續數字牌</span></h5>
+			<p>e.g. ♥️10 ♥️9 ♥️8 ♥️7 ♥️6</p>
+			<h5><span class='h4-size'>四條(鐵支):</span>
+				<span class='p-size'>其中四張是相同數字的撲克牌</span></h5>
+			<p>e.g. ♥️A ♦️A ♠️A ♣️A ♠️3</p>
+			<h5><span class='h4-size'>葫蘆:</span>
+				<span class='p-size'>三張相同數字及任何兩張其他相同數字</span></h5>
+			<p>e.g. ♥️K ♦️K ♠️K ♠️Q ♣️Q</p>
+			<h5><span class='h4-size'>同花:</span>
+				<span class='p-size'>五張不按順序但相同花色的撲克牌</span></h5>
+			<p>e.g. ♦️A ♦️J ♦️10 ♦️5 ♦️3</p>
+			<h5><span class='h4-size'>順子:</span>
+				<span class='p-size'>五張連續數字撲克牌</span></h5>
+			<p>e.g. ♠️A ♥️K ♣️Q ♦️J ♠️10</p>
+			<h5><span class='h4-size'>三條:</span>
+				<span class='p-size'>三張相同數字和兩張不同數字的撲克牌</span></h5>
+			<p>e.g. ♥️J ♦️J ♣️J ♣️7 ♣️3</p>
+			<h5><span class='h4-size'>兩對:</span>
+				<span class='p-size'>兩對數字相同但兩兩不同的撲克牌</span></h5>
+			<p>e.g. ♥️Q ♦️Q ♥️J ♦️J ♣️3</p>
+			<h5><span class='h4-size'>對子:</span>
+				<span class='p-size'>兩張相同數字的撲克牌和另三張無法組成牌型的雜牌</span></h5>
+			<p>e.g. ♠️A ♣️A ♦️9 ♦️6 ♦️2</p>
+			<h5><span class='h4-size'>散牌:</span>
+				<span class='p-size'>無法組成以上任一牌型的雜牌</span></h5>
+			<p>e.g. ♠️A ♠️J ♥️10 ♦️5 ♦️3</p>
+		</div>
+	</div>
+
+	<div class='right'>
+	</div>
+</div>
+
+<div id ="second"class='container'>
+	<div class='left'>
+		<ul>
+			<li><a href="#first">牌型大小</a></li>
+			<li><a href="#second">動作</a></li>
+		</ul>
+	</div>
+
+	<div class='center'>
+		<h2>動作:</h2>
+		<div class='indent'>
+			<h3>1.Check 過牌</h3>
+			<p>如果在你前面沒有人下注，輪到你的時候，如果你不想下注的話，可以選擇Check</p>
+			<h3>2.Call 跟注</h3>
+			<p>投入與前一位玩家相同數量的籌碼</p>
+			<h3>3.Raise 加注</h3>
+			<p>投入比前一位玩家更多的籌碼，迫使其他玩家投入與你相同數量的籌碼或棄牌</p>
+			<h3>4.Fold 棄牌</h3>
+			<p>當你認為不可能戰勝對手，不想再下注時，可選擇Fold</p>
+		</div>
+	</div>
+
+	<div class='right'>
+	</div>
+</div>
+
+<div id='footer'>
+</div>
+
+</body>
+</html>
