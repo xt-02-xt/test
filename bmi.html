@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body>
+<form>
+請輸入身高 (公尺): <input type="text" id="height">
+</form>
+<form>
+請輸入體重 (公斤): <input type="text" id="weight">
+</form>
+<p id="BMI"></p>
+<button type="button" onclick="cal()">BMI</button>
+<script>
+function cal(){
+let height = document.getElementById("height").value;
+let weight = document.getElementById("weight").value;
+let bmi = weight/(height*height);
+document.getElementById("BMI").innerHTML= bmi;
+}
+</script>
+</body>
+</html>

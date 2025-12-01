@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<style>
+*{font-family: "LXGW WenKai TC", cursive;}
+</style>
+<body>
+<h3>離散均勻分佈</h3>
+<form>
+請輸入數據(m): <input type="text" id="m">
+</form>
+<p id="DU"></p>
+
+<h3>超幾何分佈</h3>
+<form>
+請輸入數據(n): <input type="text" id="hn">
+</form>
+<form>
+請輸入數據(N1): <input type="text" id="N1">
+</form>
+<form>
+請輸入數據(N2): <input type="text" id="N2">
+</form>
+<p id="H"></p>
+
+<h3>幾何分佈</h3>
+<form>
+請輸入數據(p): <input type="text" id="gp">
+</form>
+<p id="G"></p>
+
+<h3>伯努力分佈</h3>
+<form>
+請輸入數據(p): <input type="text" id="berp">
+</form>
+<p id="Ber"></p>
+
+<h3>二項分佈</h3>
+<form>
+請輸入數據(n): <input type="text" id="bn">
+</form>
+<form>
+請輸入數據(p): <input type="text" id="bp">
+</form>
+<p id="B"></p>
+<button type="button" onclick="calDU()">X~DU(m)</button>
+<button type="button" onclick="calH()">X~H(n,N1,N2)</button>
+<button type="button" onclick="calG()">X~G(p)</button>
+<button type="button" onclick="calBer()">X~Ber(p)</button>
+<button type="button" onclick="calB()">X~B(n,p)</button>
+<script>
+function calDU(){
+	let m =  Number(document.getElementById("m").value);
+	let DUEX =  (m+1)/2;
+	let DUVar = (m**2-1)/12;
+	document.getElementById("DU").innerHTML= "E(X) = "+ DUEX +","+ "Var(X) = " + DUVar;
+}
+function calH(){
+	let n =  Number(document.getElementById("hn").value);
+	let N1 =  Number(document.getElementById("N1").value);
+	let N2 =  Number(document.getElementById("N2").value);
+	let N = N1+N2;
+	let HEX =  n*(N1/N);
+	let HVar = n*(N1/N)*(N2/N)*((N-n)/(N-1));
+	document.getElementById("H").innerHTML= "E(X) = "+ HEX +","+ "Var(X) = " + HVar;
+}
+function calG(){
+	let p =  Number(document.getElementById("gp").value);
+	let q = 1-p;
+	let GEX =  1/p;
+	let GVar = q/(p**2);
+	document.getElementById("G").innerHTML= "E(X) = "+ GEX +","+ "Var(X) = " + GVar;
+}
+function calBer(){
+	let p =  Number(document.getElementById("berp").value);
+	let q = 1-p;
+	let BerEX =  p;
+	let BerVar = p*q;
+	document.getElementById("Ber").innerHTML= "E(X) = "+ BerEX +","+ "Var(X) = " + BerVar;
+}
+function calB(){
+	let n =  Number(document.getElementById("bn").value);
+	let p =  Number(document.getElementById("bp").value);
+	let q = 1-p;
+	let BEX =  n*p;
+	let BVar = n*p*q;
+	document.getElementById("B").innerHTML= "E(X) = "+ BEX +","+ "Var(X) = " + BVar;
+}
+</script>
+</body>
+</html>
