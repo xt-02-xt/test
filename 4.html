@@ -2,16 +2,33 @@
 <html>
 <head><meta charset="utf-8"></head>
 <style>
+*{box-sizing: border-box;}
 *{font-family: "LXGW WenKai TC", cursive;}
+.container{height: 200vh}
+.side1{width:15%; float:left; height: 200vh; background-color: #ffffff;}
+.side2{width:7.5%; float:left; height: 200vh; background-color: #f9f9ec;}
+.center{width:55%; float:left; height: 200vh; background-color: #f9f9ec;}
+.MathJax_Display, mjx-container[display="true"] {
+    text-align: left !important;
+}
+.p-size{ font-size: 15px; font-weight: 300}
 </style>
+<script id="MathJax-script"  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
 <body>
-<h3>離散均勻分佈</h3>
+<div class='side1'>
+</div>
+<div class='side2'>
+</div>
+<div class='center'>
+<h3>離散均勻分佈 $$f(x) = {{1} \over m}$$</h3>
 <form>
 請輸入數據(m): <input type="text" id="m">
 </form>
 <p id="DU"></p>
+<button type="button" onclick="calDU()">X~DU(m)</button>
 
-<h3>超幾何分佈</h3>
+<h3>超幾何分佈 $$f(x) = {{{C^{N_1}_x}{C^{N_2}_{n-x}}} \over {C^N_n}}$$</h3>
 <form>
 請輸入數據(n): <input type="text" id="hn">
 </form>
@@ -22,20 +39,23 @@
 請輸入數據(N2): <input type="text" id="N2">
 </form>
 <p id="H"></p>
+<button type="button" onclick="calH()">X~H(n,N1,N2)</button>
 
-<h3>幾何分佈</h3>
+<h3>幾何分佈<span class="p-size">(第x次出現第一次成功機率)</span> $$f(x) = (1-p)^{x-1}p$$</h3>
 <form>
 請輸入數據(p): <input type="text" id="gp">
 </form>
 <p id="G"></p>
+<button type="button" onclick="calG()">X~G(p)</button>
 
-<h3>伯努力分佈</h3>
+<h3>伯努力分佈<span class="p-size">(一次實驗)</span> $$f(x) = p^x(1-p)^{1-x}$$</h3>
 <form>
 請輸入數據(p): <input type="text" id="berp">
 </form>
 <p id="Ber"></p>
+<button type="button" onclick="calBer()">X~Ber(p)</button>
 
-<h3>二項分佈</h3>
+<h3>二項分佈<span class="p-size">(n次伯努力)</span> $$f(x) = {C^n_x}p^x(1-p)^{n-x}$$</h3>
 <form>
 請輸入數據(n): <input type="text" id="bn">
 </form>
@@ -43,48 +63,95 @@
 請輸入數據(p): <input type="text" id="bp">
 </form>
 <p id="B"></p>
-<button type="button" onclick="calDU()">X~DU(m)</button>
-<button type="button" onclick="calH()">X~H(n,N1,N2)</button>
-<button type="button" onclick="calG()">X~G(p)</button>
-<button type="button" onclick="calBer()">X~Ber(p)</button>
 <button type="button" onclick="calB()">X~B(n,p)</button>
+
+<h3>負二項分佈<span class="p-size">(第x次出現第r次成功機率)</span> $$f(x) = {C^{x-1}_{r-1}}p^r(1-p)^{x-r}$$</h3>
+<form>
+請輸入數據(r): <input type="text" id="nbn">
+</form>
+<form>
+請輸入數據(p): <input type="text" id="nbp">
+</form>
+<p id="NB"></p>
+<button type="button" onclick="calNe()">X~NB(r,p)</button>
+
+<h3>Poisson分佈 $$f(x) = {{λ^xe^{-λ}} \over {x!}}$$</h3>
+<form>
+請輸入數據(λ): <input type="text" id="λ">
+</form>
+<p id="P"></p>
+<button type="button" onclick="calP()">X~P(λ)</button>
+</div>
+<div class='side2'>
+</div>
+<div class='side1'>
+</div>
+
 <script>
 function calDU(){
 	let m =  Number(document.getElementById("m").value);
-	let DUEX =  (m+1)/2;
-	let DUVar = (m**2-1)/12;
-	document.getElementById("DU").innerHTML= "E(X) = "+ DUEX +","+ "Var(X) = " + DUVar;
+	if(m!==0){
+		let DUEX =  (m+1)/2;
+		let DUVar = (m**2-1)/12;
+		document.getElementById("DU").innerHTML= "E(X) = "+ DUEX +","+ "Var(X) = " + DUVar;
+	}
 }
 function calH(){
 	let n =  Number(document.getElementById("hn").value);
 	let N1 =  Number(document.getElementById("N1").value);
 	let N2 =  Number(document.getElementById("N2").value);
-	let N = N1+N2;
-	let HEX =  n*(N1/N);
-	let HVar = n*(N1/N)*(N2/N)*((N-n)/(N-1));
-	document.getElementById("H").innerHTML= "E(X) = "+ HEX +","+ "Var(X) = " + HVar;
+	if(n!==0 && N1!==0 && N2!==0){
+		let N = N1+N2;
+		let HEX =  n*(N1/N);
+		let HVar = n*(N1/N)*(N2/N)*((N-n)/(N-1));
+		document.getElementById("H").innerHTML= "E(X) = "+ HEX +","+ "Var(X) = " + HVar;
+	}
 }
 function calG(){
 	let p =  Number(document.getElementById("gp").value);
-	let q = 1-p;
-	let GEX =  1/p;
-	let GVar = q/(p**2);
-	document.getElementById("G").innerHTML= "E(X) = "+ GEX +","+ "Var(X) = " + GVar;
+	if(p!==0){
+		let q = 1-p;
+		let GEX =  1/p;
+		let GVar = q/(p**2);
+		document.getElementById("G").innerHTML= "E(X) = "+ GEX +","+ "Var(X) = " + GVar;
+	}
 }
 function calBer(){
 	let p =  Number(document.getElementById("berp").value);
-	let q = 1-p;
-	let BerEX =  p;
-	let BerVar = p*q;
-	document.getElementById("Ber").innerHTML= "E(X) = "+ BerEX +","+ "Var(X) = " + BerVar;
+	if(p!==0){
+		let q = 1-p;
+		let BerEX =  p;
+		let BerVar = p*q;
+		document.getElementById("Ber").innerHTML= "E(X) = "+ BerEX +","+ "Var(X) = " + BerVar;
+	}
 }
 function calB(){
 	let n =  Number(document.getElementById("bn").value);
 	let p =  Number(document.getElementById("bp").value);
-	let q = 1-p;
-	let BEX =  n*p;
-	let BVar = n*p*q;
-	document.getElementById("B").innerHTML= "E(X) = "+ BEX +","+ "Var(X) = " + BVar;
+	if(n!==0 && p!==0){
+		let q = 1-p;
+		let BEX =  n*p;
+		let BVar = n*p*q;
+		document.getElementById("B").innerHTML= "E(X) = "+ BEX +","+ "Var(X) = " + BVar;
+	}	
+}
+function calNB(){
+	let r =  Number(document.getElementById("nbn").value);
+	let p =  Number(document.getElementById("nbp").value);
+	if(r!==0 && p!==0){
+		let q = 1-p;
+		let NBEX =  r/p;
+		let NBVar = r*q/(P**2);
+		document.getElementById("NB").innerHTML= "E(X) = "+ NBEX +","+ "Var(X) = " + NBVar;
+	}	
+}
+function calP(){
+	let λ =  Number(document.getElementById("λ").value);
+	if(λ!==0){
+		let PEX =  λ;
+		let PVar = λ;
+		document.getElementById("P").innerHTML= "E(X) = "+ PEX +","+ "Var(X) = " + PVar;
+	}
 }
 </script>
 </body>
