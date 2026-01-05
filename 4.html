@@ -5,9 +5,21 @@
 *{box-sizing: border-box;}
 *{font-family: "LXGW WenKai TC", cursive;}
 .container{height: 200vh}
+#header{
+	height: 100px;
+	width: 100vw;
+	background-color: #003366;
+	padding: 1em;
+	font-family: "LXGW WenKai TC", cursive;
+	font-weight: 400;
+	font-style: normal;
+	text-align: center;
+	color: #f2f2f2;
+}
 .side1{width:15%; float:left; height: 200vh; background-color: #ffffff;}
 .side2{width:7.5%; float:left; height: 200vh; background-color: #f9f9ec;}
 .center{width:55%; float:left; height: 200vh; background-color: #f9f9ec;}
+#footer{height: 50px; width: 100%; float: left; background-color: #003366; padding: 1em;}
 .MathJax_Display, mjx-container[display="true"] {
     text-align: left !important;
 }
@@ -16,6 +28,9 @@
 <script id="MathJax-script"  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
 </script>
 <body>
+<div id="header">
+<h1>E(x)、Var(x)計算機</h1>
+</div>
 <div class='side1'>
 </div>
 <div class='side2'>
@@ -75,7 +90,7 @@
 <p id="NB"></p>
 <button type="button" onclick="calNe()">X~NB(r,p)</button>
 
-<h3>Poisson分佈 $$f(x) = {{λ^xe^{-λ}} \over {x!}}$$</h3>
+<h3>Poisson分佈<span class="p-size">(第x次出現第r次成功機率)</span> $$f(x) = {{λ^xe^{-λ}} \over {x!}}$$</h3>
 <form>
 請輸入數據(λ): <input type="text" id="λ">
 </form>
@@ -85,6 +100,8 @@
 <div class='side2'>
 </div>
 <div class='side1'>
+</div>
+<div id="footer">
 </div>
 
 <script>
